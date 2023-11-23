@@ -1,0 +1,114 @@
+
+download python
+python --version
+pip --version
+pip install django (for global installation)
+
+dajngo-admin startproject your_project_name   # let your_project_name = myproject -> your desire project name instead of myproject
+
+cd myproject
+virtualenv your_env_name   # let your_env_name = myenv -> your desire project name instead of myenv
+
+myenv\scripts\activate
+pip install django
+
+code .  # redirecting to vs code
+
+python manage.py runserver
+
+python manage.py startapp your_app_name    # let your_app_name = testapp -> your desire project name instead of testapp
+
+views.py 
+    from django.http import HttpResponse
+
+    def test(request):
+        return HttpResponse("This is django application")
+
+settings.py
+    INSTALLED_APPS = [
+        #other apps
+        'testapp',
+    ]
+
+create new urls.py inside testapp app.
+testapp/urls.py
+    from django.urls import path()
+    from . import views
+
+    urlpatterns = [
+        path('test', views.test, name='test')
+    ]
+
+include new urls.py in django's default urls.py
+myproject/urls.py
+    from django.urls import path, include
+    from testapp import views
+
+    path('', include('testapp.urls'))
+
+create new templates folder
+testapp/templates
+
+create new html file inside templates folder named home.html
+
+views.py
+    def Home(request):
+        template_name = 'home.html'
+        return render(request, template_name)
+
+testapp/urls.py
+    from django.urls import path()
+    from . import views
+
+    urlpatterns = [
+        path('home', views.Home, name='home')
+    ]
+
+models.py
+    class Test(models.Model):
+        name = models.CharField(max_length=50)
+
+python manage.py makemigrations
+python manage.py migrate
+
+testapp/admin.py
+    from .models import Test
+    admin.site.register(Test)
+
+views.py
+    def Home(request):
+        template_name = 'home.html'
+        alldata = Test.objects.all()
+        context = {
+            'alldata' : alldata
+        }
+        return render(request, template_name, context)
+
+home.html
+        <ul>
+        {% for data in alldata %}
+        <li>
+            Name: {{data.name}}
+        </li>
+        {% endfor %}
+    </ul>
+
+python manage.py createsuperuser
+
+
+
+# django data types and field list
+
+    name = models.CharField(max_length=50)
+    description = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    publish_date = models.DateField()
+    is_published = models.BooleanField(default=False)
+    tags = models.ManyToManyField('Tag')
+    created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='image', null=True, blank=True)
+    email = models.EmailField(max_length=254, unique=True)
+
+
+
+
