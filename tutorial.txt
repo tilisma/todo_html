@@ -75,6 +75,8 @@ testapp/admin.py
     from .models import Test
     admin.site.register(Test)
 
+python manage.py createsuperuser
+
 views.py
     def Home(request):
         template_name = 'home.html'
@@ -93,7 +95,6 @@ home.html
         {% endfor %}
     </ul>
 
-python manage.py createsuperuser
 
 
 

@@ -1,5 +1,7 @@
 
-create app named Todotask
+
+Task 1:
+create app named Taskapp
 add it in settings.py
 create new urls.py file and include it in default urls.py
 create model named Task with field (name, description)
@@ -7,3 +9,13 @@ create new templates folder inside newly created app. (Todotask/templates)
 create new html file inside templates folder.
 create views to display Models data
 display all Tasks in html file
+
+Task 2:
+cretae a model with fields:
+title
+description
+completed
+created_at
+created_by
+
+make crud operation of this model.
