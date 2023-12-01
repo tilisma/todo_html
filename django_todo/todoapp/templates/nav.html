@@ -1,0 +1,52 @@
+
+
+<div
+class="flex justify-between lg:justify-center lg:gap-40 px-3 items-center sticky top-0 z-50 w-[100%] bg-gray-50 py-2">
+<div class="">
+
+</div>
+
+<div class="lg:flex lg:gap-10 gap-3 pr-20 hidden flex-wrap p-5 ">
+  <a href="#">
+    <div class=" text-sm font-Roboto border-b-2 hover:border-b-2 hover:border-b-[#f8373f]  border-b-gray-50 text-gray-600 ">TODO App</div>
+  </a>
+  
+</div>
+{% if request.user.is_authenticated %}
+<a href="#">
+  <div class="">{{request.user.username}}</div>
+</a>
+{% else %}
+<a href="{% url 'login' %}">
+    <div class=" w-full  hidden lg:flex lg:items-center lg:justify-center border border-transparent text-base leading-6 font-medium rounded-md text-gray-50 bg-[#f8373f] hover:text-[#f8373f] hover:bg-gray-50 focus:outline-none hover:border-[#f8373f] focus:shadow-outline-indigo focus:border-[#f8373f] transition duration-150 ease-in-out md:py-2 md:text-sm md:px-6 ">Log In</div>
+  </a>
+  {% endif %}
+      <div class="lg:hidden flex justify-between" id="toggle">
+  <a onclick="toggleSidebar()">
+    <span class="material-icons-outlined !text-3xl"> menu </span>
+  </a>
+  <!-- off canvas -->
+  <div class="fixed top-0 left-0 w-full opacity-30 h-full bg-black hidden" id="sidebar_black"
+    onclick="toggleSidebar()"></div>
+  <sidebar class="fixed top-0 left-0 animation bg-gray-50 w-[70%] md:w-96 h-full -translate-x-full" id="sidebar">
+    <div class="absolute right-2 top-2" onclick="toggleSidebar()">
+      <span class="material-icons-outlined !text-3xl"> close </span>
+    </div>
+    <div class="flex flex-col space-y-5 justify-center mt-10 ml-7">
+      <!-- <a href="#contact" onclick="toggleSidebar()">contact</a> -->
+
+      <div class="text-var-blue">
+
+      </div>
+      <a href="#" onclick="toggleSidebar()">
+        <div class="font-semibold text-xl font-Roboto hover:border-b-2 border-b-2 text-gray-600">TODO App</div>
+      </a>
+      <a href="{% url 'login' %}" onclick="toggleSidebar()">
+        <div class="font-semibold text-xl font-Roboto hover:border-b-2 border-b-2 text-gray-600">Log In</div>
+      </a>
+
+    </div>
+  </sidebar>
+  <!-- off canvas end here  -->
+</div>
+</div>
