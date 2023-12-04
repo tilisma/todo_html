@@ -33,15 +33,17 @@
                 <div class="task-created-at text-gray-500">
                     Created at: <span class="font-bold">{{task.task_date}}</span>
                 </div>
-                     {% if task.completed %} 
+                     {% if task.completed == True%} 
                 <div class="task-status text-green-500">
                     Status: <span class="font-bold">Completed</span>
                     {% else %}
+                <div class="task-status text-red-500">
                     Status: <span class="font-bold">Incompleted</span>
                 </div>
                 {% endif %}
 
             </div>
         </div>
+        <a href="{% url 'update' task.id %}">Edit</a>
     </div>
 {% endblock content %}

@@ -15,7 +15,7 @@
                     <input class="w-full p-2 border rounded" type="text" name='search-area' placeholder="Search tasks">
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer">Search</button>
                 </form>
-                <a id="add-link" href="#" class="text-3xl text-blue-500">+</a>
+                <a id="add-link" href="{% url 'addtask' %}" class="text-3xl text-blue-500">+</a>
             </div>
             {% for data in completed %}
             <div class="task-items-wrapper">
@@ -25,7 +25,7 @@
                         <i><s><a href="{% url 'detail' data.id %}" class="text-green-500">{{data.title}} </a></s></i>
                     
                     </div>
-                    <a class="delete-link text-red-500" href="#">×</a>
+                    <a class="delete-link text-red-500" href="{% url 'delete' data.id %}">×</a>
                 </div>
                 {% endfor %}
                
@@ -36,7 +36,7 @@
                         <a href="{% url 'detail' data.id %}" class="text-blue-500">{{data.title}}</a>
                     </div>
                     
-                    <a class="delete-link text-red-500" href="#">×</a>
+                    <a class="delete-link text-red-500" href="{% url 'delete' data.id %}">×</a>
                 </div>
                 {% endfor %}
                 <h3 class="text-gray-500 text-center mt-4">No items in the list</h3>

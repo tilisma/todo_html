@@ -17,5 +17,15 @@ class UserRegistrationForm(forms.ModelForm):
         model = UserProfile
         fields = ["name", "address", "phone", "email", "username", "password"]
 
+class TaskForm(forms.ModelForm):
+        class Meta:
+            model = Task
+            fields = ["title", "description","task_date"]
+
+class EditTaskForm(forms.ModelForm):
+        class Meta:
+             model = Task 
+             fields = ["completed",]           
+
 
 
