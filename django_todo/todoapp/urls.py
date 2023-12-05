@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from .views import *
 from . import views
 
@@ -9,5 +9,6 @@ urlpatterns = [
     path('detail/<str:pk>', TaskDetail, name="detail"),
     path('addtask', AddTask,name='addtask'),
     path('update/<str:pk>', EditTask,name='update'),
-    path('delete/<str:pk>',DeleteTask,name='delete') 
+    path('delete/<str:pk>',DeleteTask,name='delete'),
+    
 ]
